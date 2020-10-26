@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Redesign of the Leybold Sputter Machine Software</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/moon.css" id="theme">
+
+	<link rel="icon" type="image/png" href="data/logo.png">
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>&#9883;</h1>
+				<h2>Redesign of the Leybold Sputter Machine Software</h2>
+			</section>
+
+			<section>
+
+				<section>
+					<h1>&#9817;</h1>
+					<h2>Running Codebase</h2>
+				</section>
+	
+				<section>
+					<h1>Components</h1>
+				</section>
+				<section>
+					<ol>
+						<li>PLC (w/ a PLC-Controller in C++)</li>
+						<ul>
+							<li>(most) <b>safety critical</b> controls</li>
+							<li>interlocks</li>
+						</ul>
+						<li>C++ application</li>
+						<ul>
+							<li>control of all non-PLC-implemented devices</li>
+							<li>serving the GUI</li>
+							<li>interfaceing the PLC</li>
+						</ul>
+					</ol>
+				</section>
+				
+				<section>
+					<h1>GUI</h1>
+				</section>
+
+				<section>
+					<h1>Architecture</h1>
+				</section>
+
+				<section>
+					<h1>Desing Patterns</h1>
+					<iframe class="stretch"
+					src="https://refactoring.guru/design-patterns/cpp" frameborder="0"></iframe>
+					<aside class="notes">
+						<ul>
+							<li>Adapter</li>
+							<li>Chain of Responsibility</li>
+							<b><li>Composite</li></b>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<figure>
+						<img src="data/classMainWindow__coll__graph.png" alt="">
+					</figure>
+				</section>
+				
+			</section>
+
+			<section data-transition="convex">
+				<h1>&#9816;</h1>
+				<h2>Software Redesign</h2>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/zoom/zoom.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom]
+		});
+	</script>
+</body>
+
+</html>
