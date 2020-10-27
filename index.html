@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
 	<link rel="stylesheet" href="dist/theme/moon.css" id="theme">
+	<link rel="stylesheet" href="data/custom.css">
 
 	<link rel="icon" type="image/png" href="data/logo.png">
 	<!-- Theme used for syntax highlighted code -->
@@ -58,10 +59,10 @@
 					<h1>Architecture</h1>
 				</section>
 
-				<section>
-					<h1>Desing Patterns</h1>
-					<iframe class="stretch"
-					src="https://refactoring.guru/design-patterns/cpp" frameborder="0"></iframe>
+				<section data-background-iframe="https://refactoring.guru/design-patterns/cpp" data-background-interactive data-preload>
+					<h1> <p class="fragment fade-out">Desing Patterns</p></h1>
+					<!--<iframe class="stretch"
+					src="https://refactoring.guru/design-patterns/cpp" frameborder="0"></iframe>-->
 					<aside class="notes">
 						<ul>
 							<li>Adapter</li>
@@ -69,19 +70,81 @@
 							<b><li>Composite</li></b>
 						</ul>
 					</aside>
+					
 				</section>
 
-				<section>
-					<figure>
-						<img src="data/classMainWindow__coll__graph.png" alt="">
-					</figure>
+				<section data-background="data/classMainWindow__coll__graph.png" data-background-size="contain">
+					<p class="fragment fade-out">Architecture in Action?</p>
 				</section>
 				
 			</section>
 
 			<section data-transition="convex">
-				<h1>&#9816;</h1>
-				<h2>Software Redesign</h2>
+				<section>
+					<h1>&#9816;</h1>
+					<h2>Software Redesign</h2>
+				</section>
+				<section>
+					<h1>Style and Architecture</h1>
+				</section>
+				<section data-auto-animate>
+					<h3>Variables</h3>
+					<pre data-id="style-pattern"><code class="c++" data-trim data-noescape data-line-numbers="1-2">
+					int i_am_a_selfdescriptive_variable;
+					int selfdescriptive_class_member_variable_;
+					</code></pre>
+					<div id="foot-append">https://google.github.io/styleguide/cppguide.html</div>
+				</section>
+				<section data-auto-animate>
+					<h3>Data Types</h3>
+					<pre data-id="style-pattern"><code class="c++" data-trim data-noescape data-line-numbers="4-6">
+					int i_am_a_selfdescriptive_variable;
+					int selfdescriptive_class_member_variable_;
+
+					class VeryObviousClassName{ ... };
+					struct VeryObviousStructName{ ... };
+					enum VeryObviousEnumName{ ... };
+					</code></pre>
+					<div id="foot-append">https://google.github.io/styleguide/cppguide.html</div>
+				</section>
+				<section data-auto-animate>
+					<h3>Functions</h3>
+					<pre data-id="style-pattern"><code class="c++" data-trim data-noescape data-line-numbers="8-15">
+					int i_am_a_selfdescriptive_variable;
+					int selfdescriptive_class_member_variable_;
+
+					class VeryObviousClassName{ ... };
+					struct VeryObviousStructName{ ... };
+					enum VeryObviousEnumName{ ... };
+
+					std::string SetDeviceOutptState(void new_output_state);
+					class SomeEncapsulatedFunctionality {
+						public:
+							int get_some_counter();
+							void set_some_counter(int counter);
+						private:
+							int some_counter_;
+					};
+					</code></pre>
+					<div id="foot-append">https://google.github.io/styleguide/cppguide.html</div>
+				</section>
+
+				<section data-background="data/app_new_abstr-factory.png" data-background-size="60%">
+					<h2><p class="fragment fade-out">Abstract Factory / Template actually applied</p></h2>
+				</section>
+
+				<section>
+					<h2>Configuration Files</h2>					
+						<p class="fragment fade-up"><b>up-to-date</b> (crowd-sourced) parser</p>
+						<p class="fragment fade-up"><b>easy</b> to parse</p>
+						<p class="fragment fade-up">small <b>footprint</b></p>
+						<p class="fragment fade-up">low syntactic <b>overhead</b></p>
+				</section>
+				<section data-transition-speed="fast">
+					<a href="https://toml.io/en/"><h2>TOML</h2></a> <br>
+					<p>Tom's Obvious Minimal Language</p>
+					<iframe src="https://toml.io/en/" frameborder="0" class="stretch" data-preload></iframe>
+				</section>
 			</section>
 		</div>
 	</div>
@@ -91,6 +154,7 @@
 	<script src="plugin/markdown/markdown.js"></script>
 	<script src="plugin/highlight/highlight.js"></script>
 	<script src="plugin/zoom/zoom.js"></script>
+	<script src="data/foot.js"></script>
 	<script>
 		// More info about initialization & config:
 		// - https://revealjs.com/initialization/
@@ -101,6 +165,7 @@
 			// Learn about plugins: https://revealjs.com/plugins/
 			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom]
 		});
+		slides.footerSetup('sputter_nan', 'TUM');
 	</script>
 </body>
 
