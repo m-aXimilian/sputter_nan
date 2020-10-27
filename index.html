@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
-	<link rel="stylesheet" href="dist/theme/moon.css" id="theme">
+	<link rel="stylesheet" href="dist/theme/simple.css" id="theme">
 	<link rel="stylesheet" href="data/custom.css">
 
 	<link rel="icon" type="image/png" href="data/logo.png">
@@ -21,7 +21,7 @@
 	<div class="reveal">
 		<div class="slides">
 			<section>
-				<h1>&#9883;</h1>
+				<h1 style="color: #0065bd;">&#9883;</h1>
 				<h2>Redesign of the Leybold Sputter Machine Software</h2>
 			</section>
 
@@ -53,6 +53,11 @@
 				
 				<section>
 					<h1>GUI</h1>
+					<ul>
+						<li class="fragment fade-in">implemented in <b>QT</b></li>
+						<li class="fragment fade-in">highly <b>entagled</b> with the logic</li>
+						<li class="fragment fade-in"><b>frozen</b> versioning</li>
+					</ul>
 				</section>
 
 				<section>
@@ -74,7 +79,11 @@
 				</section>
 
 				<section data-background="data/classMainWindow__coll__graph.png" data-background-size="contain">
-					<p class="fragment fade-out">Architecture in Action?</p>
+					<p class="fragment fade-in highlight-font">Architecture in Action?</p>
+				</section>
+
+				<section data-background="data/classMainWindow_setUiPointers_callGraph.png" data-background-size="contain">
+					<p class="fragment fade-in highlight-font">Kind of...</p>
 				</section>
 				
 			</section>
@@ -88,12 +97,14 @@
 					<h1>Style and Architecture</h1>
 				</section>
 				<section data-auto-animate>
-					<h3>Variables</h3>
-					<pre data-id="style-pattern"><code class="c++" data-trim data-noescape data-line-numbers="1-2">
+					<p class="fragment fade-in">everything scoped in <b>namespaces</b></p>
+					<p class="fragment fade-in"><b>and</b> protected by <b>#define</b> guards</p>
+					<h3 class="fragment fade-in">Variables</h3>
+					<pre class="fragment fade-in" data-id="style-pattern"><code class="c++" data-trim data-noescape data-line-numbers="1-2">
 					int i_am_a_selfdescriptive_variable;
 					int selfdescriptive_class_member_variable_;
 					</code></pre>
-					<div id="foot-append">https://google.github.io/styleguide/cppguide.html</div>
+					<div class="footer">https://google.github.io/styleguide/cppguide.html</div>
 				</section>
 				<section data-auto-animate>
 					<h3>Data Types</h3>
@@ -105,7 +116,7 @@
 					struct VeryObviousStructName{ ... };
 					enum VeryObviousEnumName{ ... };
 					</code></pre>
-					<div id="foot-append">https://google.github.io/styleguide/cppguide.html</div>
+					<div class="footer">https://google.github.io/styleguide/cppguide.html</div>
 				</section>
 				<section data-auto-animate>
 					<h3>Functions</h3>
@@ -126,23 +137,30 @@
 							int some_counter_;
 					};
 					</code></pre>
-					<div id="foot-append">https://google.github.io/styleguide/cppguide.html</div>
+					<div class="footer">https://google.github.io/styleguide/cppguide.html</div>
 				</section>
-
+				<section>
+					<h2>Design Patterns</h2>
+				</section>
 				<section data-background="data/app_new_abstr-factory.png" data-background-size="60%">
-					<h2><p class="fragment fade-out">Abstract Factory / Template actually applied</p></h2>
+					<h2><p class="fragment fade-out highlight-font">Abstract Factory / Template actually applied</p></h2>
 				</section>
 
 				<section>
-					<h2>Configuration Files</h2>					
-						<p class="fragment fade-up"><b>up-to-date</b> (crowd-sourced) parser</p>
-						<p class="fragment fade-up"><b>easy</b> to parse</p>
-						<p class="fragment fade-up">small <b>footprint</b></p>
-						<p class="fragment fade-up">low syntactic <b>overhead</b></p>
+					<h2>Configuration Files</h2>
+					<h3 class="fragment fade-in">Requirements</h3>
+					<ul>
+						<li class="fragment fade-up"><b>up-to-date</b> (crowd-sourced) parser</li>
+						<li class="fragment fade-up"><b>easy</b> to parse</li>
+						<li class="fragment fade-up">small <b>footprint</b></li>
+						<li class="fragment fade-up">low syntactic <b>overhead</b></li>
+					</ul>
 				</section>
 				<section data-transition-speed="fast">
-					<a href="https://toml.io/en/"><h2>TOML</h2></a> <br>
-					<p>Tom's Obvious Minimal Language</p>
+					<a href="https://toml.io/en/"><h2>TOML</h2></a>
+					<p>Tom's Obvious Minimal Language  <br>
+						<b>provides all this</b>
+					</p>
 					<iframe src="https://toml.io/en/" frameborder="0" class="stretch" data-preload></iframe>
 				</section>
 			</section>

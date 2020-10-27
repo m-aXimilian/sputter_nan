@@ -6,10 +6,29 @@
     font-size: Small;
     z-index: 32;
     padding-bottom: 15px;
-    padding-left: 300px;
+    padding-left: 30px;
     background-color: inherit;
  }
 
 .foot-append {
     display: none;
 }
+
+.highlight-font{
+    color: #0065bd;
+}
+
+.li.b{
+    color: #0065bd;
+    font-weight: bold;
+}
+
+section b{
+    color: #0065bd;
+    font-weight: bold;
+}
+
+h1, h2, h3, h4{
+    font-weight: normal;
+}
+
