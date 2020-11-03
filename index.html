@@ -55,7 +55,7 @@
 					<h1>GUI</h1>
 					<ul>
 						<li class="fragment fade-in">implemented in <b>QT</b></li>
-						<li class="fragment fade-in">highly <b>entagled</b> with the logic</li>
+						<li class="fragment fade-in">highly <b>entangled</b> with the logic</li>
 						<li class="fragment fade-in"><b>frozen</b> versioning</li>
 					</ul>
 				</section>
@@ -163,6 +163,107 @@
 					</p>
 					<iframe src="https://toml.io/en/" frameborder="0" class="stretch" data-preload></iframe>
 				</section>
+				<section data-auto-animate="">
+					<h2>TOML parsers</h2>
+					<pre data-id="toml"><code class="toml" data-trim data-noescape>
+						title = "TOML Example"
+
+						[owner]
+						name = "Tom Preston-Werner"
+						dob = 1979-05-27T07:32:00-08:00
+
+						[database]
+						server = "192.168.1.1"
+						ports = [ 8001, 8001, 8002 ]
+					</code></pre>
+					
+					<div class="footer">https://github.com/ToruNiina/Boost.toml</div>
+				</section>
+				<section data-auto-animate>
+					<h2>TOML parsers</h2>
+					<pre data-id="toml"><code class="c++" data-trim data-noescape>
+						#include "toml/toml.hpp"
+	
+						int main(){
+						const toml::table file = toml::parse("example.toml");
+					
+						const std::string title = toml::get<std::string>(file.at("title"));
+					
+						const toml::table& owner = toml::get<toml::table>(file.at("owner"));
+						const std::string& name  = toml::get<std::string>(owner.at("name"));
+						const auto& dob   = toml::get<toml::offset_datetime>(owner.at("dob"));
+	
+						const auto ports = toml::get<std::vector<int>>(database.at("ports"));
+						}
+						</code></pre>
+						<div class="footer">https://github.com/ToruNiina/Boost.toml</div>
+				</section>
+				<section>
+					<h2>Dependencies and 3rd parties</h2>
+				</section>
+				<section>
+					<h3>Make sure</h3>
+					<ol>
+						<li>not to <b>reinvent/-implement</b> everything, but</li>
+						<li>use <b>revised</b> (crowd-sourced) libraries when possible</li>
+					</ol>
+					<p class="fragment fade-in">&rAarr; possibility of <b>self-mitigating</b> bugs</p>
+					<table class="fragment">
+						<tr>
+							<td>
+								<a href="http://libnodave.sourceforge.net/">PLC Library</a>
+							</td>
+							<td>
+								<a href="https://www.boost.org/doc/libs/1_61_0/doc/html/signals2.html">Boost.Signals2</a>
+							</td>
+							<td>
+								<a href="https://www.boost.org/doc/libs/1_70_0/libs/beast/doc/html/beast/using_websocket.html">Boost.Beast</a>
+							</td>
+							<td>
+								<a href="https://www.ni.com/de-de/support/downloads/drivers/download.ni-visa.html">NI-VISA</a>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section>
+					<h2>Architecture</h2>
+					<p class="fragment fade-in">
+						Relies mainly on
+						<ul>
+							<li class="fragment"><b>distinction</b> of GUI and Application</li>
+							<li class="fragment">by utilizing <b>Client-Server</b> paradigm</li>
+						</ul>
+					</p>
+				</section>
+				<section data-auto-animate>
+					<h3>Client-Server</h3>
+					<img data-id="clientserver" style="width: 90%;" src="data/base_ui.png" alt="">
+					<div class="footer">https://github.com/iboB/html5-gui-demo</div>
+				</section>
+				<section data-auto-animate>
+					<h3>Adaptation</h3>
+					<img data-id="clientserver" src="data/ui-http-ws.png" style="width: 90%;" alt="">
+					<div class="footer">https://github.com/iboB/html5-gui-demo</div>
+				</section>
+
+				<section>
+					<h2>Requirements</h2>
+					<ul>
+						<li>a <b>websocket</b> spawned by the Application</li>
+						<li>a <b>http-server</b> for presenting static GUI content</li>
+						<li><b>renderer process</b> linked to the websocket like:
+						<pre><code data-trim data-noescape>
+						var ws = new WebSocket(’ws://localhost:1234’);
+						</code></pre>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section data-transition="concave">
+				<h2>Questions</h2>
+				<h1 style="color: #0065bd;">&#10067;</h1>
+				
 			</section>
 		</div>
 	</div>
